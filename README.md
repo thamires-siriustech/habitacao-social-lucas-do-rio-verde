@@ -8,25 +8,25 @@ Análise de dados sobre a política de habitação de interesse social em Lucas 
 
 ## Este é o 2º projeto de uma análise em duas camadas
 
-- **[Camada 1 — Projeção populacional e demanda habitacional](https://github.com/thamires-siriustech/previsao-populacional-lucas-do-rio-verde)** projetou a *demanda* futura por moradia a partir do crescimento populacional (1.100 a 1.800 novas unidades/ano até 2035).
+- **[Camada 1 — Projeção populacional e demanda habitacional](https://github.com/thamires-siriustech/previsao-populacional-lucas-do-rio-verde)** estima a *demanda bruta total* por moradia a partir do crescimento populacional (aproximadamente 1.121 a 1.816 novas unidades/ano entre 2027 e 2035, conforme o cenário).
 - **Camada 2 (este repositório)** mede a *oferta* real: quantas moradias de interesse social a cidade entregou, e confronta com a demanda.
 
 O cruzamento das duas camadas é o diferencial do projeto — uma análise que não existe publicamente para a cidade.
 
 ## Principais resultados
 
-- **1.371 unidades de interesse social entregues** entre 2017 e 2026, de forma irregular (com um vazio de cinco anos entre 2017 e 2022).
-- **Pipeline de 2.171 unidades em obra** — mais do que tudo já entregue, sinalizando uma mudança de patamar na política habitacional.
-- **As entregas cobriram apenas ~24% da fila de espera de 2021** (5.800 famílias inscritas, 4.000 no perfil Faixa 1).
-- A **demanda anual projetada** pela Camada 1 — mesmo no cenário mais conservador (1.098 moradias/ano) — **supera a oferta média histórica**. A conta estrutural só fecha se o pipeline se concretizar e o ritmo se mantiver.
-- Política de **forte articulação federativa**: a maioria dos empreendimentos empilha recursos federais, estaduais e municipais.
+- Entre 2017 e 2026, a base registra **1.084 casas/apartamentos entregues** e **287 lotes urbanizados**. O total de 1.371 reúne categorias diferentes e não equivale a 1.371 casas prontas.
+- O pipeline inclui **2.000 casas em construção** dentro do escopo social estrito. Outras 171 unidades em obra pertencem a um empreendimento marcado fora desse escopo e ficam separadas do indicador principal.
+- A fila de espera divulgada em 2021 registrava **5.800 famílias**, das quais 4.000 no perfil Faixa 1. Como não há ligação individual entre entregas e famílias atendidas, o projeto não estima percentual de cobertura nem déficit residual pela simples subtração de totais.
+- A Camada 1 projeta demanda habitacional bruta total de aproximadamente **1.121 a 1.816 moradias por ano** entre 2027 e 2035. A oferta social histórica de casas/apartamentos teve média de cerca de 108 unidades por ano no período completo; a comparação mostra diferença de escala, não um déficit anual diretamente medido.
+- Política de **articulação federativa**: a base permite contar empreendimentos que registram fontes federais, estaduais e municipais, mas essa contagem não mede os valores financeiros aportados por cada esfera.
 
 ## Metodologia
 
 1. **Construção do dataset** — curadoria manual de fontes públicas (Prefeitura, MT Par/SiHab-MT, Ministério das Cidades, Caixa), já que não existe base estruturada de habitação municipal. Cada registro tem a URL da fonte.
 2. **Análise de entregas** — unidades entregues por ano, com distinção rigorosa entre entregue, em obra e previsto (para não inflar números).
-3. **Composição** — por tipo de moradia, faixa de renda e fonte de recurso.
-4. **Cruzamento oferta × demanda** — confronto com a fila de espera e com a demanda anual projetada na Camada 1.
+3. **Composição** — por tipo de moradia, faixa de renda e fonte de recurso, filtrando o escopo social estrito.
+4. **Contextualização da demanda** — compara a fila histórica e a demanda anual projetada sem inferir cobertura da fila ou déficit residual quando não há dados que liguem famílias atendidas às unidades entregues.
 
 ## Stack técnico
 
@@ -58,11 +58,12 @@ habitacao-social-lucas-do-rio-verde/
 
 ## Escopo e limitações
 
-- **Escopo:** apenas habitação de interesse social (subsídio público). Alto padrão fica de fora; o único caso de renda mais alta (Parque Primavera) recebe flag para separação.
+- **Escopo:** o indicador principal considera apenas habitação de interesse social no escopo estrito. O empreendimento Parque Primavera, com 171 unidades em obra, está marcado fora desse escopo e é excluído dos totais principais.
 - **Dataset curado manualmente** — auditável (toda linha tem fonte), mas pode não capturar todos os empreendimentos.
-- **Fila de espera é um ponto único (2021)** — série histórica exigiria pedido via LAI.
+- **Fila de espera é um ponto único (2021)** — série histórica exigiria pedido via LAI. Sem dados que liguem unidades entregues a famílias atendidas, não calculamos percentual de cobertura pela divisão dos totais.
 - **Investimento incompleto** — só o Vida Nova II tem valor consolidado; os demais exigiriam consulta a licitações.
-- **Obra ≠ entrega** — o pipeline é uma promessa sujeita a atrasos.
+- **Obra ≠ entrega** — o pipeline é oferta potencial sujeita a atrasos.
+- **Escopos diferentes na comparação** — a projeção populacional estima demanda habitacional total, enquanto este projeto mede a oferta de habitação social. A diferença é contextual, não um cálculo direto de déficit social.
 
 ## Fontes dos dados
 
